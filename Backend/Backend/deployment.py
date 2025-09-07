@@ -27,16 +27,13 @@ MIDDLEWARE = [
 #     
 # ]
 
-STATIC_ROOT = BASE_DIR/'staticfiles'
-
 STORAGES = {
     'default': {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
-    "staticfiles": {
+    'staticfiles':{
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
-        "LOCATION": STATIC_ROOT,
-    },
+    }
 }
 
 CONNECTION = os.environ['AZURE_MYSQL_CONNECTIONSTRING']
@@ -52,3 +49,6 @@ DATABASES = {
         'PASSWORD': CONNECTION_STR['password'],
     }
 }
+
+STATIC_URL = '/static/'
+STATIC_ROOT = str(BASE_DIR / "staticfiles")
