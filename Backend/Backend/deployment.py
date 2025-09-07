@@ -46,6 +46,9 @@ DATABASES = {
         'HOST': os.environ["AZURE_MYSQL_HOST"],
         'USER': os.environ["AZURE_MYSQL_USER"],
         'PASSWORD': os.environ["AZURE_MYSQL_PASSWORD"],
+        "OPTIONS": {
+            "ssl": {"ca": "/etc/ssl/certs/ca-certificates.crt"}
+        },
     }
 }
 
