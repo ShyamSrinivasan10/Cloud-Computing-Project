@@ -27,12 +27,15 @@ MIDDLEWARE = [
 #     
 # ]
 
+STATIC_ROOT = BASE_DIR/'staticfiles'
+
 STORAGES = {
     'default': {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "LOCATION": STATIC_ROOT,
     },
 }
 
@@ -49,5 +52,3 @@ DATABASES = {
         'PASSWORD': CONNECTION_STR['password'],
     }
 }
-
-STATIC_ROOT = BASE_DIR/'staticfiles'
