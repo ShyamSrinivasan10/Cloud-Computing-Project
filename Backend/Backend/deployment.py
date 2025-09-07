@@ -1,7 +1,6 @@
 import os
 
 from .settings import *
-from .settings import BASE_DIR
 
 ALLOWED_HOSTS = [
     os.environ['WEBSITE_HOSTNAME']
@@ -50,5 +49,4 @@ DATABASES = {
     }
 }
 
-# STATIC_ROOT = BASE_DIR/'staticfiles'
-STATIC_ROOT = str(BASE_DIR / 'staticfiles')
+STATIC_ROOT = BASE_DIR/'staticfiles'
