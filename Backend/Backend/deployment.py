@@ -1,6 +1,7 @@
 import os
 
 from .settings import *
+from .settings import BASE_DIR
 
 ALLOWED_HOSTS = [
     os.environ['WEBSITE_HOSTNAME']
@@ -30,9 +31,9 @@ STORAGES = {
     'default': {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
-    'staticfiles':{
+    "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
-    }
+    },
 }
 
 CONNECTION = os.environ['AZURE_MYSQL_CONNECTIONSTRING']
