@@ -36,7 +36,7 @@ STORAGES = {
     }
 }
 
-CONNECTION = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
+CONNECTION = os.environ['AZURE_MYSQL_CONNECTIONSTRING']
 CONNECTION_STR = {
     pair.split('=')[0]: pair.split('=')[1] for pair in CONNECTION.split(' ')
 }
