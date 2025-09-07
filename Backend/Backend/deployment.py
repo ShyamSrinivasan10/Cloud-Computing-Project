@@ -38,6 +38,7 @@ STORAGES = {
 #     pair.split('=')[0]: pair.split('=')[1] for pair in CONNECTION.split(' ')
 # }
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
