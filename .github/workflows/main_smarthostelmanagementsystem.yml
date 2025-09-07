@@ -43,7 +43,7 @@ jobs:
           python manage.py collectstatic --noinput
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-      
+
       - name: Zip artifacts for deployment
         run: |
           cd Backend
@@ -54,7 +54,7 @@ jobs:
         with:
           name: python-app
           path: |
-            backend/release.zip
+            Backend/release.zip
             !venv/
 
   deploy:
