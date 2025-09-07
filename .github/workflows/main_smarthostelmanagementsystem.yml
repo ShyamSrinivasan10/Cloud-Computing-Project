@@ -85,6 +85,6 @@ jobs:
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'smartHostelManagementSystem'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4F2F2A0C69F44CE0A1CC45B961720178 }}
+            app-name: 'SmartHostelManagement'
+            slot-name: 'Production'
+            publish-profile: ${{ secrets.__publishingprofilesecretname__ }}
