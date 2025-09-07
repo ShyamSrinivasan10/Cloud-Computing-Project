@@ -1,0 +1,11 @@
+<project version="4">
+  <component name="Black">
+    <option name="sdkName" value="Python 3.13 (Backend)" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="1bb88f4d-66f5-4577-8bbb-98eb75ec86a4" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" project-jdk-name="Python 3.13" project-jdk-type="Python SDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
