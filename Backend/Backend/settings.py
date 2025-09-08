@@ -28,7 +28,9 @@ DEBUG = True
 #     'localhost',
 #     '127.0.0.1',
 #     'smarthostelmanagement-a3fncbc3fua9huab.southeastasia-01.azurewebsites.net',
+#      https://smarthostelmanagement-a3fncbc3fua9huab.southeastasia-01.azurewebsites.net
 #     '169.254.131.2',
+
 # ]
 
 ALLOWED_HOSTS = ["*"]
