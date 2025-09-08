@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import { Building, User, Lock, Eye, EyeOff } from 'lucide-react'
 
+const isDevelopment = import.meta.env.MODE === 'development';
+const API_BASE_URL = isDevelopment ? import.meta.env.VITE_API_BASE_URL_LOCAL : import.meta.env.VITE_API_BASE_URL_PROD;
+
+
 const Login = ({ onLogin }) => {
   const [formData, setFormData] = useState({
     username: '',
@@ -24,7 +28,7 @@ const Login = ({ onLogin }) => {
     setError('')
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api-token-auth/', {
+      const response = await fetch(`${API_BASE_URL}/api-token-auth/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
