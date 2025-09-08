@@ -24,12 +24,14 @@ SECRET_KEY = 'django-insecure-1bnx%=&d3x&*z0y$^!eu84fd565^mb*tmyq)3*qdd9%fx-7&kh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'smarthostelmanagement-a3fncbc3fua9huab.southeastasia-01.azurewebsites.net',
-    '169.254.131.2',
-]
+# ALLOWED_HOSTS = [
+#     'localhost',
+#     '127.0.0.1',
+#     'smarthostelmanagement-a3fncbc3fua9huab.southeastasia-01.azurewebsites.net',
+#     '169.254.131.2',
+# ]
+
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
