@@ -1,0 +1,88 @@
+trigger:
+  branches:
+    include:
+      - main
+
+variables:
+  pythonVersion: '3.10'
+  nodeVersion: '20.x'
+  backendAppService: 'SmartHostelManagement'
+  frontendAppService: 'SmartHostelManagementSystem-Frontend'
+  azureServiceConnection: 'AzureDevOpsConnection'
+
+stages:
+# --------------------- Backend Stage ---------------------
+- stage: Backend
+  displayName: 'Build & Deploy Backend (Django)'
+  jobs:
+    - job: BuildBackend
+      displayName: 'Build Backend'
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - task: UsePythonVersion@0
+          inputs:
+            versionSpec: '$(pythonVersion)'
+        - script: |
+            cd Backend
+            python -m venv venv
+            source venv/bin/activate
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+            python manage.py collectstatic --noinput
+            zip -r release.zip . -x "__pycache__/*" -x "*.git/*" -x "venv/*"
+          displayName: 'Install dependencies & Collect Static Files'
+        - publish: Backend/release.zip
+          artifact: backendArtifact
+          displayName: 'Publish Backend Artifact'
+
+    - job: DeployBackend
+      displayName: 'Deploy Backend to Azure App Service'
+      dependsOn: BuildBackend
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - download: current
+          artifact: backendArtifact
+        - task: AzureWebApp@1
+          inputs:
+            azureSubscription: '$(azureServiceConnection)'
+            appName: '$(backendAppService)'
+            package: '$(Pipeline.Workspace)/backendArtifact/release.zip'
+            deploymentMethod: 'zipDeploy'
+
+# --------------------- Frontend Stage ---------------------
+- stage: Frontend
+  displayName: 'Build & Deploy Frontend (React)'
+  jobs:
+    - job: BuildFrontend
+      displayName: 'Build Frontend'
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '$(nodeVersion)'
+        - script: |
+            cd frontend
+            npm install
+            npm run build
+          displayName: 'Install dependencies & Build React'
+        - publish: frontend/build
+          artifact: frontendArtifact
+          displayName: 'Publish Frontend Build Artifact'
+
+    - job: DeployFrontend
+      displayName: 'Deploy Frontend to Azure Static Web App'
+      dependsOn: BuildFrontend
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - download: current
+          artifact: frontendArtifact
+        - task: AzureStaticWebApp@0
+          inputs:
+            app_location: 'frontend'
+            output_location: 'frontend/build'
+            azure_static_web_apps_api_token: '$(azureServiceConnection)'
+            skip_app_build: true
