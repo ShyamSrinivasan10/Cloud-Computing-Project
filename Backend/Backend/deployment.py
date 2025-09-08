@@ -20,9 +20,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     
-# ]
+CORS_ALLOWED_ORIGINS = [
+    'https://gray-forest-01402d100.1.azurestaticapps.net'
+]
 
 STORAGES = {
     'default': {
