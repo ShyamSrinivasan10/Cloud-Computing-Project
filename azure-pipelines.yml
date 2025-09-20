@@ -86,5 +86,5 @@ stages:
           inputs:
             app_location: 'frontend'
             output_location: 'frontend/dist'
-            azure_static_web_apps_api_token: '$(azureServiceConnection)'
+            azure_static_web_apps_api_token: '286aaa03937a577c4b8fb73c39aef3be45c6ca3df0169a4cf29ff557b8d5b8ee01-eb1adce7-c007-4ab4-892b-e3fd016f7cb5000031101402d100'
             skip_app_build: true
