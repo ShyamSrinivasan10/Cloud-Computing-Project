@@ -68,9 +68,9 @@ stages:
             npm install
             npm run build || exit 1
           displayName: 'Install dependencies & Build React'
-        - script: ls -al $(Build.SourcesDirectory)/frontend/build
+        - script: ls -al $(Build.SourcesDirectory)/frontend/dist
           displayName: 'List Frontend Build Directory'
-        - publish: $(Build.SourcesDirectory)/frontend/build
+        - publish: $(Build.SourcesDirectory)/frontend/dist
           artifact: frontendArtifact
           displayName: 'Publish Frontend Build Artifact'
 
@@ -85,6 +85,6 @@ stages:
         - task: AzureStaticWebApp@0
           inputs:
             app_location: 'frontend'
-            output_location: 'frontend/build'
+            output_location: 'frontend/dist'
             azure_static_web_apps_api_token: '$(azureServiceConnection)'
             skip_app_build: true
