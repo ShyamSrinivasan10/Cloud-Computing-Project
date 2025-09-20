@@ -46,7 +46,7 @@ stages:
           artifact: backendArtifact
         - task: AzureWebApp@1
           inputs:
-            azureSubscription: '$(azureServiceConnection)'
+            azureSubscription: 'AzureDevOpsConnection'
             appName: '$(backendAppService)'
             package: '$(Pipeline.Workspace)/backendArtifact/release.zip'
             deploymentMethod: 'zipDeploy'
