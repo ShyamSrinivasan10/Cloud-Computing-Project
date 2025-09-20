@@ -66,9 +66,11 @@ stages:
         - script: |
             cd frontend
             npm install
-            npm run build
+            npm run build || exit 1
           displayName: 'Install dependencies & Build React'
-        - publish: frontend/build
+        - script: ls -al $(Build.SourcesDirectory)/frontend/build
+          displayName: 'List Frontend Build Directory'
+        - publish: $(Build.SourcesDirectory)/frontend/build
           artifact: frontendArtifact
           displayName: 'Publish Frontend Build Artifact'
 
