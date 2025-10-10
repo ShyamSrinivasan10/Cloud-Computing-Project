@@ -3,6 +3,7 @@
 import os
 import sys
 
+
 def main():
     """Run administrative tasks."""
     settings_module = 'Backend.deployment' if 'WEBSITE_HOSTNAME' in os.environ else 'Backend.settings'
