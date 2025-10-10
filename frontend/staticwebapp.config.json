@@ -1,0 +1,9 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/static/*", "/*.js"]
+  },
+  "mimeTypes": {
+    ".js": "text/javascript"
+  }
+}
