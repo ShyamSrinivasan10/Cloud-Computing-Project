@@ -9,7 +9,6 @@ import Fees from './pages/Fees'
 import Login from './pages/Login'
 import './App.css'
 
-
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
